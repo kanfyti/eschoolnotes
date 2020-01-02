@@ -1,11 +1,5 @@
 <?php
-    function getAllNotes($username, $password, $userId, $eiId) {
-		$headers = array(
-			'Accept: application/json',
-			'Content-Type: application/json',
-
-        );
-        
+    function getAllNotes($username, $password, $eiId) {
         //Part 1 - Login into eschool
         $url = "https://app.eschool.center/ec-server/login";
         $ch = curl_init($url);
@@ -29,13 +23,19 @@
             return "401";
         }
 
-        //Part 2 - Getting all notes
-        $url = 	"https://app.eschool.center/ec-server/student/getDiaryPeriod/?userId=$userId&eiId=$eiId";
+        //Part 2 - Getting userId
+        $url = "https://app.eschool.center/ec-server/state";
 
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, false);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+        $response = json_decode(curl_exec($ch), true);
+        $userId = $response['userId'];
+        
+        //Part 3 - Getting all notes
+        $url = 	"https://app.eschool.center/ec-server/student/getDiaryPeriod/?userId=$userId&eiId=$eiId";
+
+        curl_setopt($ch, CURLOPT_URL, $url);
 
         $response = curl_exec($ch);
         curl_close($ch);

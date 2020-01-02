@@ -5,10 +5,9 @@
     
     $username = $_POST['username'];
     $hash_password = hash("sha256", $_POST['password']);
-    $userId = $_POST['userId'];
 	$eiId = $_POST['eiId'];
 	
-	$notes_json = getAllNotes($username, $hash_password, $userId, $eiId);
+	$notes_json = getAllNotes($username, $hash_password, $eiId);
 	$notes = notesProcessing($notes_json);
 
 	printHead();
