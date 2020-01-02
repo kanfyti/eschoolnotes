@@ -13,6 +13,7 @@
 
 	printHead();
 	printTable($notes, $subjects);
+	printForm();
 	printEnd();
 
 	function notesProcessing($notes_json) {
