@@ -1,4 +1,5 @@
 <?php
+    
     function printHead() {
         echo <<<_HEAD
         <!DOCTYPE html>
@@ -23,12 +24,13 @@ _HEAD;
         echo "<tr><th scope='col'>Subject</th><th scope='col'>Sum of notes</th><th scope='col'>Sum of coeffs</th><th scope='col'>Note<th scope='col'>Additional notes</th>";
         echo "</thead><tbody>";
         
-        foreach ($subjects as $subject) {
+        for ($i = 0; $i < count($subjects); ++$i) {
+            $subject = $subjects[$i];
             $sumOfNotes = $notes[$subject]["sumNotesWithCoeff"];
             $sumOfCoeff = $notes[$subject]["sumCoeff"];
             $note = $notes[$subject]["overallNote"];
 
-            echo "<tr id='row-$subject'><th scope='row'>$subject</th><td>$sumOfNotes</td><td>$sumOfCoeff</td><td>$note</td><td><div class='additionalNotes'></div></td></tr>";
+            echo "<tr id='subject-row-$i'><th scope='row'>$subject</th><td>$sumOfNotes</td><td>$sumOfCoeff</td><td>$note</td><td><div class='additionalNotes'></div></td></tr>";
         }
         
         echo "</tbody></table>";

@@ -1,9 +1,14 @@
 function addNote(obj) {
+    let subjects = new Array('Mathematic', 'Biology', 'Geography', 'Geometry', 
+    'English', 'Informatics', 'History', 'Literature', 'OBSH',
+    'Society', 'Russian Language', 'Physic', 'Physical Education', 
+    'Chemistry');
+
     let subject = $('#subject')[0].value
     let note = $('#note')[0].value * 1
     let coeff = $('#coeff')[0].value * 1.0
 
-    let row = $('#row-' + subject)[0]
+    let row = $('#subject-row-' + subjects.indexOf(subject))[0]
     
     let currSumOfNote = row.cells[1].innerHTML * 1.0
     currSumOfNote += note * coeff
