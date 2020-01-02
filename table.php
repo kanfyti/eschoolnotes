@@ -1,6 +1,7 @@
 <?php
 	require_once 'getAllNotes.php';
 	require_once 'vars.php';
+	require_once 'html.php';
     
     $username = $_POST['username'];
     $hash_password = hash("sha256", $_POST['password']);
@@ -9,7 +10,10 @@
 	
 	$notes_json = getAllNotes($username, $hash_password, $userId, $eiId);
 	$notes = notesProcessing($notes_json);
-	print_r($notes);
+
+	printHead();
+	printTable($notes, $subjects);
+	printEnd();
 
 	function notesProcessing($notes_json) {
 		global $unitIdToSubjects;

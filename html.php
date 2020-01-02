@@ -44,7 +44,4 @@ _HEAD;
         </html>
 _END;
     }
-    printHead();
-    printTable(array(), array());
-    printEnd();
 ?>
