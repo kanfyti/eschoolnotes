@@ -5,3 +5,16 @@
 form {
     vertical-align: middle;
 }
+.additionalNotes {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.note {
+	width: 20px;
+	background-color: rgba(211, 8, 150, 0.5);
+}
+p {
+	margin: 0 0 0 0;
+	text-align: center;
+}

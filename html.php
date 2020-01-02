@@ -12,6 +12,7 @@
                 <title>Ecshool Notes</title>
 
                 <link rel="stylesheet" href="form.css">
+                <script src="addNote.js"></script>
             </head>
             <body>
 _HEAD;
@@ -19,7 +20,7 @@ _HEAD;
     function printTable($notes, $subjects) {
         echo "<table class='table'>";
         echo "<thead>";
-        echo "<tr><th scope='col'>Subject</th><th scope='col'>Sum of notes</th><th scope='col'>Sum of coeffs</th><th scope='col'>Note<th scope='col'>Additional notes</th><th scope='col'>Functions</th>";
+        echo "<tr><th scope='col'>Subject</th><th scope='col'>Sum of notes</th><th scope='col'>Sum of coeffs</th><th scope='col'>Note<th scope='col'>Additional notes</th>";
         echo "</thead><tbody>";
         
         foreach ($subjects as $subject) {
@@ -27,12 +28,7 @@ _HEAD;
             $sumOfCoeff = $notes[$subject]["sumCoeff"];
             $note = $notes[$subject]["overallNote"];
 
-            echo "<tr><th scope='row'>$subject</th><td>$sumOfNotes</td><td>$sumOfCoeff</td><td>$note</td><td><div class='additionalNotes'></div></td>";
-            echo <<<_CELL
-            <td>
-            </td>
-_CELL;
-            echo "</tr>";
+            echo "<tr id='row-$subject'><th scope='row'>$subject</th><td>$sumOfNotes</td><td>$sumOfCoeff</td><td>$note</td><td><div class='additionalNotes'></div></td></tr>";
         }
         
         echo "</tbody></table>";
@@ -69,7 +65,7 @@ _CELL;
             <label for="coeff" class="col-form-label">Coeff</label>
             <input class="form-control mb-3" id="coeff" placeholder="Coeff">
             
-            <input type="button" class="btn btn-primary btn-block" onclick="console.log('yes')" value="Add">
+            <input type="button" class="btn btn-primary btn-block" onclick="addNote(this)" value="Add">
         </form>
 
 _FORM;
