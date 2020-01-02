@@ -4,7 +4,7 @@
                     'English', 'Informatics', 'History', 'Literature', 'OBSH',
                     'Society', 'Russian Language', 'Physic', 'Physical Education', 
                     'Chemistry');
-    $unitId_to_subjects = array(
+    $unitIdToSubjects = array(
 		1704 => 'Mathematic',
 		1416 => 'Physic',
 		1418 => 'Geometry',
