@@ -9,12 +9,17 @@ form {
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
+	text-align: center;
 }
 .note {
-	width: 20px;
+	width: 30px;
 	background-color: rgba(211, 8, 150, 0.5);
+	border: 1px solid black;
+
+}
+.note:hover {
+	cursor: pointer;
 }
 p {
 	margin: 0 0 0 0;
-	text-align: center;
 }

@@ -13,7 +13,7 @@
                 <title>Ecshool Notes</title>
 
                 <link rel="stylesheet" href="form.css">
-                <script src="addNote.js"></script>
+                <script src="functions.js"></script>
             </head>
             <body>
 _HEAD;

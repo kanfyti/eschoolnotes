@@ -24,7 +24,25 @@ function addNote(obj) {
     let div = row.cells[4].children[0]
     let addNote = document.createElement('div')
     addNote.className = 'note'
-    addNote.innerHTML = "<p>" + note + "</p>" + "<p style='font-size: 8pt'>" + coeff + "</p>"
+    addNote.onclick = deleteNote
+    addNote.innerHTML = "<p style='font-size: 1rem'>" + note + "</p>" + "<p style='font-size: 0.75rem'>" + coeff + "</p>"
     div.appendChild(addNote)
-    console.log(div)
+}
+
+function deleteNote(obj) {
+    let noteDiv = obj.target.parentElement
+    let addNote = noteDiv.children[0].innerText * 1
+    let addCoeff = noteDiv.children[1].innerText * 1.0
+    let row = noteDiv.parentElement.parentElement.parentElement
+    console.log(noteDiv)
+
+    let sumOfNotes = row.cells[1].innerText * 1.0 - addNote * addCoeff
+    let sumOfCoeff = row.cells[2].innerText * 1.0 - addCoeff
+    console.log(sumOfNotes + " " + sumOfCoeff)
+
+    row.cells[1].innerText = sumOfNotes
+    row.cells[2].innerText = sumOfCoeff
+    row.cells[3].innerText = (sumOfNotes / sumOfCoeff).toFixed(2)
+
+    noteDiv.remove()
 }
