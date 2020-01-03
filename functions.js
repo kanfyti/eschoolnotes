@@ -1,4 +1,4 @@
-function addNote(obj) {
+    function addNote(obj) {
     let subjects = new Array('Mathematic', 'Biology', 'Geography', 'Geometry', 
     'English', 'Informatics', 'History', 'Literature', 'OBSH',
     'Society', 'Russian Language', 'Physic', 'Physical Education', 
@@ -12,14 +12,14 @@ function addNote(obj) {
     
     let currSumOfNote = row.cells[1].innerHTML * 1.0
     currSumOfNote += note * coeff
-    row.cells[1].innerHTML = currSumOfNote
+    row.cells[1].innerHTML = currSumOfNote 
 
     let currSumOfCoeff = row.cells[2].innerHTML * 1.0
     currSumOfCoeff += coeff
-    row.cells[2].innerHTML = currSumOfCoeff
+    row.cells[2].innerHTML = currSumOfCoeff 
 
     let currNote = (currSumOfNote / currSumOfCoeff).toFixed(2)
-    row.cells[3].innerHTML = currNote
+    makeDifference(row, currNote)
 
     let div = row.cells[4].children[0]
     let addNote = document.createElement('div')
@@ -38,11 +38,29 @@ function deleteNote(obj) {
 
     let sumOfNotes = row.cells[1].innerText * 1.0 - addNote * addCoeff
     let sumOfCoeff = row.cells[2].innerText * 1.0 - addCoeff
-    console.log(sumOfNotes + " " + sumOfCoeff)
+    let currNote = (sumOfNotes / sumOfCoeff).toFixed(2)
+    makeDifference(row, currNote)
 
-    row.cells[1].innerText = sumOfNotes
-    row.cells[2].innerText = sumOfCoeff
-    row.cells[3].innerText = (sumOfNotes / sumOfCoeff).toFixed(2)
+    row.cells[1].innerHTML = sumOfNotes
+    row.cells[2].innerHTML = sumOfCoeff
 
     noteDiv.remove()
+}
+
+function makeDifference(row, currNote) {
+    let pText = row.cells[3].children[0].innerHTML
+    let diff = 0.0
+    if (pText.length == 4) {
+        diff = (currNote - pText).toFixed(2)
+    } else {
+        let tableNote = pText.substring(0, 4) * 1.0
+        diff = (pText.substring(pText.indexOf('(')+1, pText.indexOf(')')) * 1.0 + (currNote - tableNote)).toFixed(2)
+    } 
+    if (diff > 0) {
+        row.cells[3].innerHTML = "<p class='more'>" + currNote + " (+" + diff + ")" + "</p>"
+    } else if (diff < 0) {
+        row.cells[3].innerHTML = "<p class='less'>" + currNote + " (" + diff + ")" + "</p>"
+    } else {
+        row.cells[3].innerHTML = "<p>" + currNote + "</p>"
+    }
 }

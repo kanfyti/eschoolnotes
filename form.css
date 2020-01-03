@@ -23,3 +23,9 @@ form {
 p {
 	margin: 0 0 0 0;
 }
+.more {
+	color: #228B22;
+}
+.less {
+	color: #DC143C;
+}

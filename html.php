@@ -30,7 +30,7 @@ _HEAD;
             $sumOfCoeff = $notes[$subject]["sumCoeff"];
             $note = $notes[$subject]["overallNote"];
 
-            echo "<tr id='subject-row-$i'><th scope='row'>$subject</th><td>$sumOfNotes</td><td>$sumOfCoeff</td><td>$note</td><td><div class='additionalNotes'></div></td></tr>";
+            echo "<tr id='subject-row-$i'><th scope='row'>$subject</th><td>$sumOfNotes</td><td>$sumOfCoeff</td><td><p>$note</p></td><td><div class='additionalNotes'></div></td></tr>";
         }
         
         echo "</tbody></table>";
